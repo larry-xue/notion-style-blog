@@ -6,12 +6,18 @@ import { Search, Settings, Add } from "@mui/icons-material";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 const StyledMenuItem = styled(MenuItem)({
   gap: "12px",
 });
 
 export default function LeftSidebar() {
+  const navigate = useNavigate();
+  const handleGoToPage = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <Box
       sx={{
@@ -21,21 +27,12 @@ export default function LeftSidebar() {
         backgroundColor: "rgb(32, 32, 32)",
       }}
     >
-      <Box
-        component={StyledMenuItem}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "nowrap",
-          padding: "4px 0",
-        }}
-      >
+      <Box component={StyledMenuItem}>
         <Avatar
-          sx={{ bgcolor: deepPurple[300], width: 28, height: 28 }}
+          sx={{ bgcolor: deepPurple[300], width: 24, height: 24 }}
           alt="Larry Xue"
         >
-          LX
+          L
         </Avatar>
         <Typography>Larry Xue's Blog</Typography>
       </Box>
@@ -54,10 +51,10 @@ export default function LeftSidebar() {
         </StyledMenuItem>
       </MenuList>
       <MenuList>
-        <StyledMenuItem>
+        <StyledMenuItem onClick={() => handleGoToPage("/run")}>
           <Typography variant="inherit">😶‍🌫️ Run</Typography>
         </StyledMenuItem>
-        <StyledMenuItem>
+        <StyledMenuItem onClick={() => handleGoToPage("/work-space")}>
           <Typography variant="inherit" noWrap>
             🤯 Work Space
           </Typography>

@@ -1,13 +1,12 @@
-import { useParams } from "react-router-dom";
+import { Box } from "@mui/material";
+import ReactMarkdown from "react-markdown";
+import templateBlog from "../../blogs/template-blog.md?raw";
 
 function Page() {
-  const { path } = useParams<{
-    path: string;
-  }>();
   return (
-    <div>
-      <h1>Page: {path}</h1>
-    </div>
+    <Box sx={{ p: 3, boxSizing: "border-box" }}>
+      <ReactMarkdown>{templateBlog}</ReactMarkdown>
+    </Box>
   );
 }
 

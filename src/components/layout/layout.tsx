@@ -7,27 +7,36 @@ export default function DrawerAppBar() {
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateColumns: "240px 1fr",
         width: "100vw",
         height: "100vh",
+        overflowX: "hidden",
       }}
     >
       <Box
         component="main"
         sx={{
-          width: "100%",
+          width: "240px",
+          position: "absolute",
+          top: 0,
           height: "100%",
           boxSizing: "border-box",
         }}
       >
         <LeftSidebar />
       </Box>
-      <Box component="main" sx={{ position: "relative", padding: "0 20px" }}>
-        <Box component="nav" sx={{ position: "absolute", top: 0 }}>
+      <Box
+        component="main"
+        sx={{
+          position: "relative",
+          padding: "0 20px",
+          marginLeft: "240px",
+          width: "calc(100vw - 240px)",
+        }}
+      >
+        <Box component="nav" sx={{ position: "sticky", top: 0 }}>
           <HeaderBar />
         </Box>
-        <Box sx={{ overflow: "auto" }}>
+        <Box sx={{ overflow: "hidden" }}>
           <Outlet />
         </Box>
       </Box>

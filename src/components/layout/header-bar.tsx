@@ -1,11 +1,19 @@
-import { Breadcrumbs, Link } from "@mui/material";
+import { Box, Breadcrumbs, Link } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
 export default function HeaderBar() {
   const currentLocation = useLocation();
 
   return (
-    <Breadcrumbs aria-label="breadcrumb">
+    <Box
+      component={Breadcrumbs}
+      aria-label="breadcrumb"
+      sx={{
+        p: 1,
+        fontSize: 16,
+        backgroundColor: "rgb(18, 18, 18)",
+      }}
+    >
       <Link underline="hover" color="inherit" href="/">
         Blog
       </Link>
@@ -16,6 +24,6 @@ export default function HeaderBar() {
       >
         {currentLocation.pathname.split("/")[1]}
       </Link>
-    </Breadcrumbs>
+    </Box>
   );
 }
