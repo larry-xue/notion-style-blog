@@ -2,8 +2,20 @@ import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";
 import LeftSidebar from "./left-sidebar";
 import HeaderBar from "./header-bar";
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function DrawerAppBar() {
+  const { path } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("path = ", path);
+    if (!path) {
+      navigate("/run");
+    }
+  }, [path]);
+
   return (
     <Box
       sx={{
